@@ -119,7 +119,7 @@ export default function Auth() {
             }}
             view="magic_link"
             showLinks={true}
-            redirectTo={`${window.location.origin}/dashboard`}
+            redirectTo={window.location.origin}
           />
         </div>
       </Card>
