@@ -176,11 +176,22 @@ export default function Dashboard() {
         </div>
       </div>
 
-      <footer className="absolute bottom-0 left-4 mb-4">
-        <a href="https://lumenads.in/" className="text-sm text-gray-600 hover:underline mr-4">
+      {/* Footer links with margin-bottom */}
+      <footer className="absolute bottom-0 left-4 mb-4">  {/* Added margin-bottom */}
+        <a
+          href="https://lumenads.in"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="text-sm text-gray-600 hover:underline mr-4"
+        >
           Lumen Ads
         </a>
-        <a href="https://lumenads.in/privacy-policy" className="text-sm text-gray-600 hover:underline">
+        <a
+          href="https://lumenads.in/privacy-policy"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="text-sm text-gray-600 hover:underline"
+        >
           Privacy Policy
         </a>
       </footer>
