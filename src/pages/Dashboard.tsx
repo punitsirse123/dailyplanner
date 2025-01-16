@@ -177,7 +177,7 @@ export default function Dashboard() {
       </div>
 
       {/* Footer links with margin-bottom */}
-      <footer className="mt-8 text-center text-gray-600"> {/* Footer container */}
+      <footer className="mt-8 text-center text-gray-400 text-sm"> {/* Footer container */}
         <p>
           © 2025 Lumen Ads 
           <a 
