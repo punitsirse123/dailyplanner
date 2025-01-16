@@ -177,7 +177,7 @@ export default function Dashboard() {
       </div>
 
       {/* Footer links with margin-bottom */}
-      <footer className="absolute bottom-0 left-4 mb-4">  {/* Added margin-bottom */}
+      <footer className="absolute bottom-0 left-8 mb-4">  {/* Added margin-bottom */}
         <a
           href="https://lumenads.in"
           target="_blank"
