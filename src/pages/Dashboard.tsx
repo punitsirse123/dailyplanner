@@ -182,14 +182,14 @@ export default function Dashboard() {
           © 2025 Lumen Ads 
           <a 
             href="https://lumenads.in/privacy-policy" 
-            className="text-blue-500 hover:underline ml-2"
+            className="hover:underline ml-2 mr-2"
           >
             Privacy Policy
           </a> 
           | 
           <a 
             href="https://lumenads.in"
-            className="text-blue-500 hover:underline ml-2"
+            className="hover:underline ml-2"
           >
             About Us
           </a>
