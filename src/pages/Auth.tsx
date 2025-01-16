@@ -60,82 +60,85 @@ export default function Auth() {
   }
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-background p-4">
-      <Card className="w-full max-w-md p-8 space-y-8 animate-fade-in">
-        {errorMessage && (
-          <Alert variant="destructive" className="animate-fade-in">
-            <AlertDescription>{errorMessage}</AlertDescription>
-          </Alert>
-        )}
-        <div className="text-center space-y-2 animate-fade-in">
-          <h1 className="text-3xl font-semibold tracking-tight">Welcome</h1>
-          <p className="text-muted-foreground">
-            Sign in to access your daily planner
-          </p>
-        </div>
+    <div className="min-h-screen flex flex-col justify-between bg-background p-4">
+      {/* Main Content */}
+      <div className="flex items-center justify-center flex-grow">
+        <Card className="w-full max-w-md p-8 space-y-8 animate-fade-in">
+          {errorMessage && (
+            <Alert variant="destructive" className="animate-fade-in">
+              <AlertDescription>{errorMessage}</AlertDescription>
+            </Alert>
+          )}
+          <div className="text-center space-y-2 animate-fade-in">
+            <h1 className="text-3xl font-semibold tracking-tight">Welcome</h1>
+            <p className="text-muted-foreground">
+              Sign in to access your daily planner
+            </p>
+          </div>
 
-        <div className="animate-fade-in [&_button]:transition-all [&_button]:duration-200 [&_button]:ease-in-out [&_button]:hover:translate-y-[-2px] [&_button]:active:translate-y-[0px]">
-          <SupabaseAuth
-            supabaseClient={supabase}
-            appearance={{
-              theme: ThemeSupa,
-              variables: {
-                default: {
-                  colors: {
-                    brand: "rgb(15 23 42)",
-                    brandAccent: "rgb(51 65 85)",
+          <div className="animate-fade-in [&_button]:transition-all [&_button]:duration-200 [&_button]:ease-in-out [&_button]:hover:translate-y-[-2px] [&_button]:active:translate-y-[0px]">
+            <SupabaseAuth
+              supabaseClient={supabase}
+              appearance={{
+                theme: ThemeSupa,
+                variables: {
+                  default: {
+                    colors: {
+                      brand: "rgb(15 23 42)",
+                      brandAccent: "rgb(51 65 85)",
+                    },
                   },
                 },
-              },
-              style: {
-                button: {
-                  borderRadius: '6px',
-                  height: '40px',
-                  transition: 'all 0.2s ease-in-out',
+                style: {
+                  button: {
+                    borderRadius: "6px",
+                    height: "40px",
+                    transition: "all 0.2s ease-in-out",
+                  },
+                  container: {
+                    gap: "16px",
+                  },
+                  divider: {
+                    margin: "24px 0",
+                  },
+                  input: {
+                    borderRadius: "6px",
+                    transition: "all 0.2s ease-in-out",
+                  },
+                  message: {
+                    borderRadius: "6px",
+                    animation: "fade-in 0.3s ease-out",
+                  },
                 },
-                container: {
-                  gap: '16px',
+              }}
+              providers={["google"]}
+              localization={{
+                variables: {
+                  magic_link: {
+                    button_label: "Sign Up",
+                  },
                 },
-                divider: {
-                  margin: '24px 0',
-                },
-                input: {
-                  borderRadius: '6px',
-                  transition: 'all 0.2s ease-in-out',
-                },
-                message: {
-                  borderRadius: '6px',
-                  animation: 'fade-in 0.3s ease-out',
-                },
-              },
-            }}
-            providers={["google"]}
-            localization={{
-              variables: {
-                magic_link: {
-                  button_label: "Sign Up"
-                }
-              }
-            }}
-            view="magic_link"
-            showLinks={true}
-            redirectTo={window.location.origin}
-          />
-        </div>
-      </Card>
-    </div>
-     {/* Footer links with margin-bottom */}
-      <footer className="mt-8 text-center text-gray-600"> {/* Footer container */}
+              }}
+              view="magic_link"
+              showLinks={true}
+              redirectTo={window.location.origin}
+            />
+          </div>
+        </Card>
+      </div>
+
+      {/* Footer */}
+      <footer className="text-center text-gray-600 mt-8">
         <p>
           © 2025 Lumen Ads 
-          <a 
-            href="https://lumenads.in/privacy-policy" 
+          <a
+            href="https://lumenads.in/privacy-policy"
             className="hover:underline ml-2 mr-2"
           >
             Privacy Policy
-          </a> 
-          | 
-          <a 
+          </a>
+          |
+          <a
             href="https://lumenads.in"
             className="hover:underline ml-2"
           >
