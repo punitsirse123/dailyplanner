@@ -128,7 +128,7 @@ export default function Auth() {
       </div>
 
       {/* Footer */}
-      <footer className="text-center text-gray-600 mt-8 text-sm">
+      <footer className="text-center text-gray-400 mt-2 text-sm">
         <p>
           © 2025 Lumen Ads 
           <a
