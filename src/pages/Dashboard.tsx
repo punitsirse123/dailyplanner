@@ -177,23 +177,23 @@ export default function Dashboard() {
       </div>
 
       {/* Footer links with margin-bottom */}
-      <footer className="absolute bottom-8 left-8 mb-4">  
-        <a
-          href="https://lumenads.in"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="text-sm text-gray-600 hover:underline mr-4"
-        >
-          Lumen Ads
-        </a>
-        <a
-          href="https://lumenads.in/privacy-policy"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="text-sm text-gray-600 hover:underline"
-        >
-          Privacy Policy
-        </a>
+      <footer className="mt-8 text-center text-gray-600"> {/* Footer container */}
+        <p>
+          © 2025 Lumen Ads 
+          <a 
+            href="https://lumenads.in/privacy-policy" 
+            className="text-blue-500 hover:underline ml-2"
+          >
+            Privacy Policy
+          </a> 
+          | 
+          <a 
+            href="https://lumenads.in"
+            className="text-blue-500 hover:underline ml-2"
+          >
+            About Us
+          </a>
+        </p>
       </footer>
     </div>
   );
