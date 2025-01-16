@@ -176,7 +176,7 @@ export default function Dashboard() {
         </div>
       </div>
 
-      <footer className="absolute bottom-4 left-4">
+      <footer className="absolute bottom-0 left-4">
         <a href="https://lumenads.in/" className="text-sm text-gray-600 hover:underline mr-4">
           Lumen Ads
         </a>
