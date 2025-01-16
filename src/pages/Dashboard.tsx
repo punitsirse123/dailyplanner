@@ -20,7 +20,6 @@ export default function Dashboard() {
   const { toast } = useToast();
   const queryClient = useQueryClient();
 
-  // Prefetch adjacent dates data
   const prefetchAdjacentDates = async (date: Date) => {
     const nextDay = new Date(date);
     nextDay.setDate(date.getDate() + 1);
@@ -29,19 +28,19 @@ export default function Dashboard() {
 
     await Promise.all([
       queryClient.prefetchQuery({
-        queryKey: ['tasks', format(nextDay, 'yyyy-MM-dd')],
+        queryKey: ["tasks", format(nextDay, "yyyy-MM-dd")],
         queryFn: () => fetchTasks(nextDay),
       }),
       queryClient.prefetchQuery({
-        queryKey: ['notes', format(nextDay, 'yyyy-MM-dd')],
+        queryKey: ["notes", format(nextDay, "yyyy-MM-dd")],
         queryFn: () => fetchNotes(nextDay),
       }),
       queryClient.prefetchQuery({
-        queryKey: ['tasks', format(prevDay, 'yyyy-MM-dd')],
+        queryKey: ["tasks", format(prevDay, "yyyy-MM-dd")],
         queryFn: () => fetchTasks(prevDay),
       }),
       queryClient.prefetchQuery({
-        queryKey: ['notes', format(prevDay, 'yyyy-MM-dd')],
+        queryKey: ["notes", format(prevDay, "yyyy-MM-dd")],
         queryFn: () => fetchNotes(prevDay),
       }),
     ]);
@@ -49,44 +48,42 @@ export default function Dashboard() {
 
   const fetchTasks = async (date: Date) => {
     const { data, error } = await supabase
-      .from('tasks')
-      .select('*')
-      .eq('due_date', format(date, 'yyyy-MM-dd'));
-    
+      .from("tasks")
+      .select("*")
+      .eq("due_date", format(date, "yyyy-MM-dd"));
+
     if (error) throw error;
     return data;
   };
 
   const fetchNotes = async (date: Date) => {
     const { data, error } = await supabase
-      .from('notes')
-      .select('*')
-      .eq('date', format(date, 'yyyy-MM-dd'));
-    
+      .from("notes")
+      .select("*")
+      .eq("date", format(date, "yyyy-MM-dd"));
+
     if (error) throw error;
     return data;
   };
 
-  // Fetch tasks for selected date
-  const { 
-    data: tasksData, 
+  const {
+    data: tasksData,
     isLoading: tasksLoading,
-    refetch: refetchTasks 
+    refetch: refetchTasks,
   } = useQuery({
-    queryKey: ['tasks', format(selectedDate, 'yyyy-MM-dd')],
+    queryKey: ["tasks", format(selectedDate, "yyyy-MM-dd")],
     queryFn: () => fetchTasks(selectedDate),
-    staleTime: 1000 * 60 * 5, // Consider data fresh for 5 minutes
+    staleTime: 1000 * 60 * 5,
   });
 
-  // Fetch notes for selected date
-  const { 
-    data: notesData, 
+  const {
+    data: notesData,
     isLoading: notesLoading,
-    refetch: refetchNotes 
+    refetch: refetchNotes,
   } = useQuery({
-    queryKey: ['notes', format(selectedDate, 'yyyy-MM-dd')],
+    queryKey: ["notes", format(selectedDate, "yyyy-MM-dd")],
     queryFn: () => fetchNotes(selectedDate),
-    staleTime: 1000 * 60 * 5, // Consider data fresh for 5 minutes
+    staleTime: 1000 * 60 * 5,
   });
 
   const handleDateChange = async (date: Date | undefined) => {
@@ -109,7 +106,7 @@ export default function Dashboard() {
         title: "Signed out successfully",
         description: "You have been logged out of your account.",
       });
-      navigate('/auth');
+      navigate("/auth");
     }
   };
 
@@ -126,7 +123,7 @@ export default function Dashboard() {
           <LogOut className="h-4 w-4" />
         </Button>
       </div>
-      
+
       <div className="max-w-7xl mx-auto">
         <DateHeader selectedDate={selectedDate} />
 
@@ -150,7 +147,7 @@ export default function Dashboard() {
                   <Skeleton className="h-10 w-full" />
                 </div>
               ) : (
-                <TaskList 
+                <TaskList
                   tasks={tasksData}
                   isLoading={tasksLoading}
                   selectedDate={selectedDate}
@@ -167,7 +164,7 @@ export default function Dashboard() {
                   <Skeleton className="h-10 w-full" />
                 </div>
               ) : (
-                <NoteList 
+                <NoteList
                   notes={notesData}
                   isLoading={notesLoading}
                   selectedDate={selectedDate}
@@ -178,6 +175,15 @@ export default function Dashboard() {
           </section>
         </div>
       </div>
+
+      <footer className="absolute bottom-4 left-4">
+        <a href="https://lumenads.in/" className="text-sm text-gray-600 hover:underline mr-4">
+          Lumen Ads
+        </a>
+        <a href="https://lumenads.in/privacy-policy" className="text-sm text-gray-600 hover:underline">
+          Privacy Policy
+        </a>
+      </footer>
     </div>
   );
 }
