@@ -179,16 +179,16 @@ export default function Dashboard() {
       {/* Footer links with margin-bottom */}
       <footer className="mt-4 text-left text-gray-400 text-sm"> {/* Footer container */}
         <p>
-          © 2025 Lumen Ads 
+          © 2025 Cliqby 
           <a 
-            href="https://lumenads.in/privacy-policy" 
+            href="https://cliqby.com/privacy-policy" 
             className="hover:underline ml-2 mr-2"
           >
             Privacy Policy
           </a> 
           | 
           <a 
-            href="https://lumenads.in"
+            href="https://cliqby.com"
             className="hover:underline ml-2"
           >
             About Us
